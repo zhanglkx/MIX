@@ -1,4 +1,5 @@
 import { defineConfig } from '@umijs/max';
+import customRouter from './config/routes';
 
 export default defineConfig({
   antd: {},
@@ -8,6 +9,21 @@ export default defineConfig({
   request: {},
   layout: {
     title: '@umijs/max',
+  },
+  cssLoader: {
+    modules: {
+      // 定义生成的类名格式
+      localIdentName: '[name]__[local]__[hash:base64:7]',
+    },
+  },
+
+  // 其他相关配置
+  lessLoader: {
+    // less 配置
+    modifyVars: {
+      // 定义 less 变量
+      '@primary-color': '#1890ff',
+    },
   },
   routes: [
     {
@@ -38,7 +54,9 @@ export default defineConfig({
       name: '编辑器',
       path: '/editor',
       component: './Editor',
+      layout: false,
     },
+    ...customRouter,
   ],
 
   npmClient: 'npm',
