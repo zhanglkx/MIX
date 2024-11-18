@@ -34,6 +34,13 @@ export default defineConfig({
       path: '/about',
       component: './About',
     },
+    {
+      name: '编辑器',
+      path: '/editor',
+      component: './Editor',
+    },
   ],
+
   npmClient: 'npm',
+  tailwindcss: {},
 });
