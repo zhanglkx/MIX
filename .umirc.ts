@@ -2,6 +2,7 @@ import { defineConfig } from '@umijs/max';
 import customRouter from './config/routes';
 
 export default defineConfig({
+  favicons: ['./src/favicon.jpg'],
   antd: {},
   access: {},
   model: {},
