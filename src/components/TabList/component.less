@@ -1,0 +1,107 @@
+/* TabComponent.module.css */
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #f5f5f5;
+}
+
+.container {
+  width: 100%;
+  overflow-x: auto;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.tabList {
+  display: flex;
+  white-space: nowrap;
+  border-bottom: 1px solid #eee;
+  background-color: darkseagreen;
+}
+
+.tabItem {
+  padding: 12px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  color: #666;
+  transition: color 0.3s ease;
+  border: #666 1px solid;
+  border-radius: 9px;
+}
+
+.activeTab {
+  color: #333;
+  font-weight: 500;
+}
+
+.activeTab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background-color: #333;
+  border-radius: 1px;
+}
+
+.content {
+  flex: 1;
+  padding: 16px;
+}
+
+.listItem {
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+}
+
+.imageWrapper {
+  width: 60px;
+  height: 60px;
+  margin-right: 12px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.itemInfo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 14px;
+  color: #333;
+}
+
+.count {
+  color: #999;
+  font-size: 12px;
+  margin-right: 8px;
+}
+
+.arrow {
+  color: #999;
+  font-size: 18px;
+}
