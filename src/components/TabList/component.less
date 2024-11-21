@@ -25,7 +25,6 @@
   display: flex;
   white-space: nowrap;
   border-bottom: 1px solid #eee;
-  background-color: darkseagreen;
 }
 
 .tabItem {
@@ -37,6 +36,17 @@
   transition: color 0.3s ease;
   border: #666 1px solid;
   border-radius: 9px;
+
+  .title {
+    max-width: 70px;
+    width: 70px;
+    text-align: center;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+  }
 }
 
 .activeTab {

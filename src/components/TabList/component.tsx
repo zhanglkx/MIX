@@ -15,6 +15,9 @@ interface ListItem {
 import React, { useRef, useState } from 'react';
 import styles from './component.less';
 
+const IMG_URL =
+  'https://gstatic.clewm.net/caoliao-resource/241008/e3a4ea_39a86844.png';
+
 const TabComponent: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -29,51 +32,51 @@ const TabComponent: React.FC = () => {
     { id: '6', label: '消防设施巡检' },
     { id: '7', label: '应急预案管理' },
     { id: '8', label: '产品功能说明' },
-    { id: '9', label: '使用手册下载' },
+    { id: '9', label: '使用手册下载产品功能说明产品功能说明产品功能说明' },
   ];
 
   // 模拟不同标签对应的内容数据
   const contentData: Record<number, ListItem[]> = {
     0: [
-      { id: '1', title: '产品详情介绍', image: '/product1.png' },
-      { id: '2', title: '巡逻巡更', image: '/patrol.png' },
-      { id: '3', title: '人员实名信息', image: '/person.png' },
+      { id: '1', title: '产品详情介绍', image: IMG_URL },
+      { id: '2', title: '巡逻巡更', image: IMG_URL },
+      { id: '3', title: '人员实名信息', image: IMG_URL },
     ],
     1: [
-      { id: '4', title: '设备检查记录', image: '/device1.png', count: 12 },
-      { id: '5', title: '维修保养记录', image: '/maintenance.png', count: 8 },
+      { id: '4', title: '设备检查记录', image: IMG_URL, count: 12 },
+      { id: '5', title: '维修保养记录', image: IMG_URL, count: 8 },
     ],
     2: [
-      { id: '6', title: '消防设施巡检', image: '/fire1.png' },
-      { id: '7', title: '应急预案管理', image: '/emergency.png' },
+      { id: '6', title: '消防设施巡检', image: IMG_URL },
+      { id: '7', title: '应急预案管理', image: IMG_URL },
     ],
     3: [
-      { id: '8', title: '产品功能说明', image: '/feature.png' },
-      { id: '9', title: '使用手册下载', image: '/manual.png' },
+      { id: '8', title: '产品功能说明', image: IMG_URL },
+      { id: '9', title: '使用手册下载', image: IMG_URL },
     ],
     4: [
-      { id: '8', title: '产品功能说明', image: '/feature.png' },
-      { id: '9', title: '使用手册下载', image: '/manual.png' },
+      { id: '8', title: '产品功能说明', image: IMG_URL },
+      { id: '9', title: '使用手册下载', image: IMG_URL },
     ],
     5: [
-      { id: '8', title: '产品功能说明', image: '/feature.png' },
-      { id: '9', title: '使用手册下载', image: '/manual.png' },
+      { id: '8', title: '产品功能说明', image: IMG_URL },
+      { id: '9', title: '使用手册下载', image: IMG_URL },
     ],
     6: [
-      { id: '8', title: '产品功能说明', image: '/feature.png' },
-      { id: '9', title: '使用手册下载', image: '/manual.png' },
+      { id: '8', title: '产品功能说明', image: IMG_URL },
+      { id: '9', title: '使用手册下载', image: IMG_URL },
     ],
     7: [
-      { id: '8', title: '产品功能说明', image: '/feature.png' },
-      { id: '9', title: '使用手册下载', image: '/manual.png' },
+      { id: '8', title: '产品功能说明', image: IMG_URL },
+      { id: '9', title: '使用手册下载', image: IMG_URL },
     ],
     8: [
-      { id: '8', title: '产品功能说明', image: '/feature.png' },
-      { id: '9', title: '使用手册下载', image: '/manual.png' },
+      { id: '8', title: '产品功能说明', image: IMG_URL },
+      { id: '9', title: '使用手册下载', image: IMG_URL },
     ],
     9: [
-      { id: '8', title: '产品功能说明', image: '/feature.png' },
-      { id: '9', title: '使用手册下载', image: '/manual.png' },
+      { id: '8', title: '产品功能说明', image: IMG_URL },
+      { id: '9', title: '使用手册下载', image: IMG_URL },
     ],
   };
 
@@ -110,7 +113,7 @@ const TabComponent: React.FC = () => {
               }`}
               onClick={() => handleTabClick(index)}
             >
-              {tab.label}
+              <span className={styles.title}> {tab.label}</span>
             </div>
           ))}
         </div>
