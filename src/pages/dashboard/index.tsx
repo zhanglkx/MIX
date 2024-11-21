@@ -20,19 +20,26 @@ const ScrollableNav: React.FC = () => {
     { id: 5, label: '标签5', content: '标签5的内容区域' },
     { id: 6, label: '标签6', content: '标签6的内容区域' },
     { id: 7, label: '标签7', content: '标签7的内容区域' },
+    { id: 8, label: '标签8', content: '标签8的内容区域' },
+    { id: 9, label: '标签9', content: '标签9的内容区域' },
+    { id: 10, label: '标签10', content: '标签10的内容区域' },
+    { id: 11, label: '标签11', content: '标签11的内容区域' },
+    { id: 12, label: '标签12', content: '标签12的内容区域' },
+    { id: 13, label: '标签13', content: '标签13的内容区域' },
+    { id: 14, label: '标签14', content: '标签14的内容区域' },
   ];
 
   const scrollToCenter = (index: number) => {
     const container = containerRef.current;
-    const items = container?.getElementsByTagName('div');
+    const items = container?.getElementsByClassName(styles.tabItem);
     if (!container || !items) return;
 
-    const item = items[index];
+    const item = items[index] as HTMLElement;
     const containerWidth = container.offsetWidth;
     const itemWidth = item.offsetWidth;
     const itemLeft = item.offsetLeft;
 
-    const scrollLeft = itemLeft - (containerWidth - itemWidth) / 2;
+    const scrollLeft = itemLeft - itemWidth - (containerWidth - itemWidth) / 2;
 
     container.scrollTo({
       left: scrollLeft,
