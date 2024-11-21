@@ -1,55 +1,51 @@
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-
-// 导入中文语言包
-import '@ckeditor/ckeditor5-build-classic/build/translations/zh-cn';
+import { useEffect, useRef } from 'react';
+import style from './index.less';
 
 const Editor = () => {
-  const editorConfig = {
-    // 设置语言为中文
-    language: 'zh-cn',
-    // 其他配置项
-    toolbar: [
-      'heading',
-      '|',
-      'bold',
-      'italic',
-      'link',
-      'bulletedList',
-      'numberedList',
-      '|',
-      'outdent',
-      'indent',
-      '|',
-      'imageUpload',
-      'blockQuote',
-      'insertTable',
-      'undo',
-      'redo',
-    ],
-  };
+  const editorRef = useRef(null);
 
-  return (
-    <CKEditor
-      editor={ClassicEditor}
-      config={editorConfig}
-      data="<p>开始编辑...</p>"
-      onReady={(editor) => {
-        console.log('编辑器就绪', editor);
-      }}
-      onChange={(event, editor) => {
-        const data = editor.getData();
-        console.log('数据变化:', data, event, editor);
-      }}
-      onBlur={(event, editor) => {
-        console.log('失去焦点', event, editor);
-      }}
-      onFocus={(event, editor) => {
-        console.log('获得焦点', event, editor);
-        console.log(editor.id);
-      }}
-    />
-  );
+  useEffect(() => {
+    // 正确的公共资源路径
+    const script = document.createElement('script');
+    script.src = '/ckeditor/ckeditor.js'; // 使用绝对路径
+
+    script.onload = () => {
+      // @ts-ignore
+      const CKEDITOR = window.CKEDITOR;
+
+
+      // 确保DOM元素已存在
+      if (editorRef.current && CKEDITOR) {
+        CKEDITOR.disableAutoInline = true;
+        CKEDITOR.replace(editorRef.current);
+
+        CKEDITOR.disableAutoInline = true;
+
+        CKEDITOR.inline('editor1');
+      }
+    };
+
+    script.onerror = (e) => {
+      console.error('CKEditor 加载失败:', e);
+    };
+
+    document.body.appendChild(script);
+
+    // 清理函数
+    return () => {
+      document.body.removeChild(script);
+      // @ts-ignore
+      if (window.CKEDITOR) {
+        // @ts-ignore
+        window.CKEDITOR.instances['editor1']?.destroy();
+      }
+    };
+  }, []);
+
+  return <>
+    <div className={style.editor1} id="editor1" contentEditable="true">
+    </div>
+  </>
 };
 
 export default Editor;
